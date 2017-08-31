@@ -1,0 +1,351 @@
+\documentclass[11pt, a4paper]{report}
+
+\usepackage[titletoc]{appendix}
+\usepackage{amsmath, amssymb}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{xcolor}
+\usepackage{arydshln}
+\usepackage[makeroom]{cancel}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[top=2cm, bottom=2.5cm]{geometry}
+\usepackage{booktabs} %to make tables look nice
+\renewcommand{\arraystretch}{1.2} % to make vertical spacing wider in the tables
+\usepackage{multirow} %to make \multirow possible (otherwise only \multicolumn)
+\usepackage{cancel} %to strike out part of the equation setting it to 0 or 1, etc.
+\usepackage{mathrsfs}%for curly letters use e.g. \mathscr{E}
+
+\listfiles %to see LaTeX version in  .log file
+
+\usepackage{listings} %to incldue Mathematica code
+%\usepackage{physics} %includes bracket notation
+\lstloadlanguages{Mathematica}
+
+\usepackage{geometry} %to use gnuplot figure as figures 
+\usepackage{color}    %to use gnuplot output as figures
+\usepackage{anyfontsize} %to specify font of a single word (e.g. in gnuplot)
+\usepackage{pgf} %allows Python->Tex figures look native. http://bkanuka.com/articles/native-latex-plots/
+
+
+\usepackage{caption}
+\usepackage{subcaption} %to have side-by-side subfigures
+\usepackage{wrapfig} %to wrap text around figures
+
+\usepackage[sort&compress]{natbib} % to have [1-3] instead of [1,2,3]
+
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother %to have Roman numerals
+
+\DeclareMathOperator\Erfc{erfc} %to type in erfc function
+\DeclareMathOperator\Erf{erf} %to type in Erf function
+\DeclareMathOperator\IP{IP} %to type in Ionization Potential function
+\DeclareMathOperator\EA{EA} %to type in Electron affinity
+\DeclareMathOperator\Min{Min} %to type in Min[... , ...]
+
+%\newcommand*{\MyPath}{../figs_in_TeX} %path to folder where my TeX file is
+
+\begin{document}
+
+
+
+\title{\textbf{Understanding QEq in BaTiO$_3$}}
+\author{Vadim Nemytov}
+%\date{\textit{Submitted on:} May 30, 2015 \\[1cm]
+%\textit{Early stage assessment report submitted in partial fulfilment of the requirements for the degree of Doctor of Philosophy of Imperial College London.}}
+
+\maketitle
+
+%\chapter*{Abstract}
+
+\tableofcontents
+%\listoftables
+\chapter*{Introduction}
+\section{Change in charge on an ion vs. local forces, properties}
+
+
+1) Figure \ref{on_site_Ferr_vs_dq} shows how a change in charge on a Ti ion relates to force on that same ion (recall, charges vary only on Ti species). The exact quantity represented by the y-axis is
+\begin{align*}
+y_{i,I} &\equiv  \frac{\sqrt{\sum_{\alpha = x,y,z}\left(F_{i,I}^{\alpha}(\{q_l\})-F_{i,I}^{\alpha}(\bar{q}_{\text{Ba}},\bar{q}_{\text{Ti}},\bar{q}_{\text{O}})\right)^2}}{\sum_{J}\sum_{j}\sqrt{\sum_{\alpha = x,y,z}\left(F_{j,J}^{\alpha}(\{q_l\})\right)^2}}
+\end{align*}
+where $i,j\in \{\text{Ti}_1,...,\text{Ti}_{27}\}$ and $I,J\in\{\text{MD}_1,...,\text{MD}_{10}\}$. 
+
+\begin{figure}[h!]
+\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Ferr_vs_dq_Ti_100K.pgf}
+	\vspace*{-0.4cm}
+	\caption{100 K. Bin size $0.0105e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Ferr_vs_dq_Ti_200K.pgf}
+	\vspace*{-0.4cm}
+	\caption{200 K. Bin size $0.011e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Ferr_vs_dq_Ti_300K.pgf}
+    \vspace*{-0.4cm}
+	\caption{300 K. Bin size $0.014e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Ferr_vs_dq_Ti_500K.pgf}
+    \vspace*{-0.4cm}
+	\caption{500 K. Bin size $0.018e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Ferr_vs_dq_Ti_1000K.pgf}
+    \vspace*{-0.4cm}
+	\caption{1000 K. Bin size $0.020e$}
+	\end{subfigure}
+\caption{On-site force on ion, vs its change in charge}
+\label{on_site_Ferr_vs_dq}
+\end{figure}
+
+2) Figure \ref{on_site_FerrNN_vs_dq} shows how a large change in charge on a Ti ion relates to forces on that same ion's $6$ Oxygen nearest neighbours. The exact quantity represented by the y-axis is:
+\begin{align*}
+y_{i,I} &\equiv  \frac{(1/6)\sum_{s\in \text{NN}_i}\sqrt{\sum_{\alpha = x,y,z}\left(F_{s,I}^{\alpha}(\{q_l\})-F_{s,I}^{\alpha}(\bar{q}_{\text{Ba}},\bar{q}_{\text{Ti}},\bar{q}_{\text{O}})\right)^2}}{\sum_{J}\sum_{j}\sqrt{\sum_{\alpha = x,y,z}\left(F_{j,J}^{\alpha}(\{q_l\})\right)^2}}
+\end{align*}
+where $6$ stands for the number of Ti nearest neighbours, $s\in\text{NN}_i=\{s=1,...,6 : \text{R}_{is} \text{ is nearest neighbour}\}$, $i\in \{\text{Ti}_1,...,\text{Ti}_{27}\}$, $j\in \{\text{O}_1,...,\text{O}_{81}\}$ and, as before, $I,J\in\{\text{MD}_1,...,\text{MD}_{10}\}$. y-axis measures forces on Oxygen ions surrounding a given Ti ion. 
+
+\begin{figure}[h!]
+\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{FerrNN_vs_dq_Ti_100K.pgf}
+	\vspace*{-0.4cm}
+	\caption{100 K. Bin size $0.0105e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{FerrNN_vs_dq_Ti_200K.pgf}
+	\vspace*{-0.4cm}
+	\caption{200 K. Bin size $0.011e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{../Figures/FerrNN_vs_dq_Ti_300K.pgf}
+    \vspace*{-0.4cm}
+	\caption{300 K. Bin size $0.014e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{../Figures/FerrNN_vs_dq_Ti_500K.pgf}
+    \vspace*{-0.4cm}
+	\caption{500 K. Bin size $0.018e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{../Figures/FerrNN_vs_dq_Ti_1000K.pgf}
+    \vspace*{-0.4cm}
+	\caption{1000 K. Bin size $0.020e$}
+	\end{subfigure}
+\caption{Forces on nearest neighbours of Ti (Oxygens) vs change in Ti charge}
+\label{on_site_FerrNN_vs_dq}
+\end{figure}
+
+3) Figure \ref{on_site_RnnNorm_vs_dq} then examines whether the change in charge on a Ti ion takes place in response to the change in its nearest neighbour structure; namely it looks at the average distance to its neighbours as a measure of how small or large the Oxygen shell around a Ti ions is. The exact value represented by the y-axis is
+\begin{align}
+y_{i,I} \equiv\underbrace{ (1/6)\sum_{s\in \text{NN}_i}\sqrt{\sum_{\alpha = x,y,z}\left(R_{s,I}^{\alpha}-R_{i,I}^{\alpha}\right)^2}}_{\equiv\bar{\text{R}}_{i,I}^{\text{NN}}}
+\end{align}\label{RnnAve}
+which is simply the average distance to the nearest neighbours of Ti ion $i$. 
+
+\begin{figure}[h!]
+\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnNorm_vs_dq_Ti_100K.pgf}
+	\vspace*{-0.4cm}
+	\caption{100 K. Bin size $0.0105e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnNorm_vs_dq_Ti_200K.pgf}
+	\vspace*{-0.4cm}
+	\caption{200 K. Bin size $0.011e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnNorm_vs_dq_Ti_300K.pgf}
+    \vspace*{-0.4cm}
+	\caption{300 K. Bin size $0.014e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnNorm_vs_dq_Ti_500K.pgf}
+    \vspace*{-0.4cm}
+	\caption{500 K. Bin size $0.018e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnNorm_vs_dq_Ti_1000K.pgf}
+    \vspace*{-0.4cm}
+	\caption{1000 K. Bin size $0.020e$}
+	\end{subfigure}
+\caption{Change in distance to nearest neighbours of Ti vs change in Ti charge}
+\label{on_site_RnnNorm_vs_dq}
+\end{figure}
+
+4) Figure \ref{on_site_RnnStDev_vs_dq} compares the change in charge to the standard deviation of the distance to nearest neighbour Oxygen ions as compared to the average distance to the shell for a given Ti ion. Defining the expression in equation \ref{RnnAve} as $\bar{\text{R}}^{\text{NN}}_{i,I}$, the exact expression represented by the y-axis is:
+\begin{align*}
+R^{\text{NN}}_{s,i;I} &\equiv \sqrt{\sum_{\alpha = x,y,z}\left(R_{s,I}^{\alpha}-R_{i,I}^{\alpha}\right)^2} \\
+y_{i,I} &\equiv \sqrt{\frac{\sum_{s\in \text{NN}_i}\left(R^{\text{NN}}_{s,i;I} - \bar{\text{R}}^{\text{NN}}_{i,I} \right)^2}{6-1}}
+\end{align*}
+which stands for the standard deviation of the nearest neighbour bond length from the average. 
+
+\begin{figure}[h!]
+\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnStDev_vs_dq_Ti_100K.pgf}
+	\vspace*{-0.4cm}
+	\caption{100 K. Bin size $0.0105e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnStDev_vs_dq_Ti_200K.pgf}
+	\vspace*{-0.4cm}
+	\caption{200 K. Bin size $0.011e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnStDev_vs_dq_Ti_300K.pgf}
+    \vspace*{-0.4cm}
+	\caption{300 K. Bin size $0.014e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnStDev_vs_dq_Ti_500K.pgf}
+    \vspace*{-0.4cm}
+	\caption{500 K. Bin size $0.018e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{RnnStDev_vs_dq_Ti_1000K.pgf}
+    \vspace*{-0.4cm}
+	\caption{1000 K. Bin size $0.020e$}
+	\end{subfigure}
+\caption{Change in St.Dev of distance to nearest neighbours of Ti vs change in Ti charge}
+\label{on_site_RnnStDev_vs_dq}
+\end{figure}
+
+5) Figure \ref{on_site_Perr_vs_dq} now examines teh relation between the change in charge on a Ti ion and its own dipole moment. The exact quantity represented by the y-axis is defined as:
+\begin{align*}
+y_{i,I} \equiv \sqrt{\sum_{\alpha = x,y,z}\left(p_{i,I}^{\alpha}(\{q_l\})-p_{i,I}^{\alpha}(\bar{q}_{\text{Ba}},\bar{q}_{\text{Ti}},\bar{q}_{\text{O}})\right)^2}
+\end{align*}
+where $i\in \{\text{Ti}_1,...,\text{Ti}_{27}\}$ and $I\in\{\text{MD}_1,...,\text{MD}_{10}\}$; the normalization was not performed because dipoles vary by at least two orders of magnitude on different ions\footnote{Normalizing, as a consequence, leads to a wide amplification of the y-axis.}. 
+
+\begin{figure}[h!]
+\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Perr_vs_dq_Ti_100K.pgf}
+	\vspace*{-0.4cm}
+	\caption{100 K. Bin size $0.0105e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Perr_vs_dq_Ti_200K.pgf}
+	\vspace*{-0.4cm}
+	\caption{200 K. Bin size $0.011e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Perr_vs_dq_Ti_300K.pgf}
+    \vspace*{-0.4cm}
+	\caption{300 K. Bin size $0.014e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Perr_vs_dq_Ti_500K.pgf}
+    \vspace*{-0.4cm}
+	\caption{500 K. Bin size $0.018e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{Perr_vs_dq_Ti_1000K.pgf}
+    \vspace*{-0.4cm}
+	\caption{1000 K. Bin size $0.020e$}
+	\end{subfigure}
+\caption{Change in dipole on an ion vs its change in charge}
+\label{on_site_Perr_vs_dq}
+\end{figure}
+
+6) Figure \ref{on_site_PerrNN_vs_dq} looks at the relation between the change in charge on a Ti ion and the dipole moments of its nearest neighbour Oxygen shell. The exact quantity represented by the y-axis is defined as:
+\begin{align*}
+y_{i,I} \equiv (1/6)\sum_{s\in \text{NN}_i}\sqrt{\sum_{\alpha = x,y,z}\left(p_{s,I}^{\alpha}(\{q_l\})-p_{s,I}^{\alpha}(\bar{q}_{\text{Ba}},\bar{q}_{\text{Ti}},\bar{q}_{\text{O}})\right)^2}
+\end{align*}
+where $i\in \{\text{Ti}_1,...,\text{Ti}_{27}\}$, $I\in\{\text{MD}_1,...,\text{MD}_{10}\}$, $s\in\text{NN}_i=\{s=1,...,6 : \text{R}_{is} \text{ is n. n.}\}$ and the normalization was not performed for the reasons mentioned earlier. 
+
+\begin{figure}[h!]
+\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{PerrNN_vs_dq_Ti_100K.pgf}
+	\vspace*{-0.4cm}
+	\caption{100 K. Bin size $0.0105e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{PerrNN_vs_dq_Ti_200K.pgf}
+	\vspace*{-0.4cm}
+	\caption{200 K. Bin size $0.011e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{PerrNN_vs_dq_Ti_300K.pgf}
+    \vspace*{-0.4cm}
+	\caption{300 K. Bin size $0.014e$}
+	\end{subfigure}
+	\hspace{0.6cm}
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{PerrNN_vs_dq_Ti_500K.pgf}
+    \vspace*{-0.4cm}
+	\caption{500 K. Bin size $0.018e$}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+	\hspace*{-0.4cm}
+	\input{PerrNN_vs_dq_Ti_1000K.pgf}
+    \vspace*{-0.4cm}
+	\caption{1000 K. Bin size $0.020e$}
+	\end{subfigure}
+\caption{Change in nearest neighbours' dipoles of Ti vs change in Ti charge}
+\label{on_site_PerrNN_vs_dq}
+\end{figure}
+
+
+\bibliographystyle{unsrt}
+\bibliography{/home/vn713/Documents/Mendeley_Desktop/Bibtex_files/library}
+%\bibliography{/home/vn713/Documents/Mendeley_Desktop/Bibtex_files/My_PhD_Related,/home/vn713/Documents/Mendeley_Desktop/Bibtex_files/My_MSc_Related}
+\end{document}
+
