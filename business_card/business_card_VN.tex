@@ -24,25 +24,26 @@
 }
 
 % now what do you like to put in your ticket
-\newcommand{\vcardfront}[5]{\ticket{%
-    \put( 63, 5){\transparent{0.4}\includegraphics[width=30mm,angle=0,origin=bl]{vadim3.jpg}}
+\newcommand{\vcardfront}[4]{\ticket{%
+    \put( 61, 23){\transparent{0.8}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.8]{vadim3.jpg}}
     %\put( 63.2, 2){\color{uni}your logo}
-    \put( 5, 13){\color{uni}\line(1,0){56}}
-    \put( 7, 10){\small your company}
-    \put( 7,6.5){\small street 1}
-    \put( 7,  3){\small xxxxx city and state}
-    \put( 7, 24){\small phone:}
-    \put( 7, 20){\small fax:}
-    \put(6,40){\bfseries\LARGE #1}
-    \put(7,36){#2}
-    \put(15,24){\small #3}
-    \put(15,20){\small #4}
-    \put( 7,16){\small #5}
+    \put( 5, 23){\color{uni}\line(1,0){54}}
+    \put( 7, 10){\fontsize{8}{12}\selectfont }
+    \put( 7,6.5){}
+    \put( 7,  3){\fontsize{8}{12}\selectfont }
+    \put(6,45){\bfseries\large #1}
+    \put(7,41){\fontsize{8}{12}\selectfont #2}
+    \put(7,28){\fontsize{8}{12}\selectfont #3}
+    \put(7,24){\fontsize{8}{12}\selectfont #4}
  }}
 
 \newcommand{\vcardback}[1]{\ticket{%
-    \put( 7, 26){\small private:}
-    \put( 5, 23){\color{uni}\line(1,0){56}}
+    \put( 7, 38){\fontsize{8}{12}\selectfont Vadim Nemytov}
+    \put( 7, 34){\fontsize{8}{12}\selectfont EU citizen, UK Resident}  
+    \put( 7, 30){\fontsize{8}{12}\selectfont Oxford, Iffley}    
+    \put( 7, 26){\fontsize{8}{12}\selectfont (+44) 79 8282 8643}
+    \put( 2, 17.8){\transparent{1.0}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.14]{GitHub-Mark.png}}
+    \put( 5, 23){\color{uni}\line(1,0){66}}
     \put( 7,19){\small%
         \begin{minipage}[t]{50mm}%
           {#1}\hss%
@@ -58,12 +59,12 @@
 % ten cards for the front
 \whiledo{\thenumcards<10}{%
   \stepcounter{numcards}%
-  \vcardfront{Vadim Nemytov}{Mathematical modelling\\ aa}{+YY/XXXX/ZZZ ZZ ZZ}{+YY/XXXX/ZZZ ZZ ZZ}{yourmail@your-provider.xxx}}
+  \vcardfront{Vadim Nemytov}{PhD candidate, Imperial College}{Mathematical modelling}{Software solutions}}
 
 \setcounter{numcards}{0}
 
 % and ten for the backside
 \whiledo{\thenumcards<10}{%
   \stepcounter{numcards}%
-  \vcardback{phone: ---/HH HH HHH\\fax: ---/HH HH HHH\\homestreet 7\\everywhere}}
+  \vcardback{\fontsize{8}{12}\selectfont https://github.com/VadimNV/CV\_and\_supporting \\www.linkedin.com/in/vadim-nemytov \\vadim.nemytov13@imperial.ac.uk \\ everywhere}}
 \end{document}
