@@ -8,6 +8,12 @@
 
 % load ticket.sty with the appropriate ticket definition
 \usepackage[zw32010,crossmark]{ticket}
+%\usepackage[zw32010]{ticket}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
+\geometry{hoffset=0cm,marginparwidth=0pt,
+          voffset=0pt,marginratio={1:1,1:1}}
+\addtolength{\oddsidemargin}{2pt}
+%\addtolength{\evensidemargin}{-.875in}
 
 % load misc stuff
 \usepackage{graphicx}
@@ -28,27 +34,24 @@
 \newcommand{\vcardfront}[4]{\ticket{%
     %\put( 61, 23){\transparent{0.8}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.8]{vadim3.jpg}}
     %\put( 63.2, 2){\color{uni}your logo}
-    \put( 61, 23){\transparent{0.8}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.7]{portrain_1.png}}
-    \put( 5, 23){\color{im1grey}\line(1,0){54}}
-    \put( 7, 10){\fontsize{8}{12}\selectfont }
-    \put( 7,6.5){}
-    \put( 7,  3){\fontsize{8}{12}\selectfont }
-    \put(6,45){\bfseries\large #1}
-    \put(7,41){\fontsize{8}{12}\selectfont #2}
-    \put(7,28){\fontsize{8}{12}\selectfont #3}
-    \put(7,24){\fontsize{8}{12}\selectfont #4}
+    \put( 61, 21){\transparent{0.8}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.7]{portrain_1.png}}
+    \put( 5, 21){\color{im1grey}\line(1,0){54}}
+    \put(6,43){\bfseries\large #1}
+    \put(7,39){\fontsize{8}{12}\selectfont #2}
+    \put(7,26){\fontsize{8}{12}\selectfont #3}
+    \put(7,23){\fontsize{8}{12}\selectfont #4}
  }}
 
 \newcommand{\vcardback}[1]{\ticket{%
-    \put( 7, 38){\fontsize{8}{12}\selectfont Vadim Nemytov}
-    \put( 7, 34){\fontsize{8}{12}\selectfont EU citizen, UK Resident}  
-    \put( 7, 30){\fontsize{8}{12}\selectfont Oxford, Iffley}    
-    \put( 7, 26){\fontsize{8}{12}\selectfont (+44) 79 8282 8643}
-    \put( 2, 18.1){\transparent{1.0}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.14]{GitHub-Mark.png}}
-    \put( 2.6, 14.6){\transparent{1.0}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.10]{linkedin-512.png}}
-    \put( 2.6, 10.8){\transparent{1.0}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.10]{e-mail_icon.jpg}}
-    \put( 5, 23){\color{im1grey}\line(1,0){66}}
-    \put( 7,19){\small%
+    \put( 10, 36){\fontsize{8}{12}\selectfont Vadim Nemytov}
+    \put( 10, 32){\fontsize{8}{12}\selectfont EU citizen, UK Resident}  
+    \put( 10, 28){\fontsize{8}{12}\selectfont Oxford, Iffley}    
+    \put( 10, 24){\fontsize{8}{12}\selectfont (+44) 79 8282 8643}
+    \put( 5, 15.1){\transparent{1.0}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.14]{GitHub-Mark.png}}
+    \put( 5.6, 11.6){\transparent{1.0}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.10]{linkedin-512.png}}
+    \put( 5.6, 7.8){\transparent{1.0}\includegraphics[width=30mm,angle=0,origin=bl,scale=0.10]{e-mail_icon.jpg}}
+    \put( 5, 21){\color{im1grey}\line(1,0){69}}
+    \put( 10,16){\small%
         \begin{minipage}[t]{50mm}%
           {#1}\hss%
         \end{minipage}}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  2 SEP 2017 09:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  2 SEP 2017 15:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -50,13 +50,40 @@ load zw32010.tdf
 \ticket@shift@y=\dimen111
 \back@shift=\dimen112
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen113
+\Gm@wd@mp=\dimen114
+\Gm@odd@mp=\dimen115
+\Gm@even@mp=\dimen116
+\Gm@layoutwidth=\dimen117
+\Gm@layoutheight=\dimen118
+\Gm@layouthoffset=\dimen119
+\Gm@layoutvoffset=\dimen120
+\Gm@dimlist=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
@@ -77,10 +104,10 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count87
+\Gread@gobject=\count90
 ))
-\Gin@req@height=\dimen113
-\Gin@req@width=\dimen114
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
@@ -94,44 +121,76 @@ Package color Info: Driver file: pdftex.def on input line 143.
 Package: transparent 2007/01/08 v1.0 Transparency via pdfTeX's color stack (HO)
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 ))
-\c@numcards=\count88
+\c@numcards=\count91
 
 (./business_card_VN_im1.aux)
 \openout1 = `business_card_VN_im1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* hratio: 1:1
+* vratio: 1:1
+* modes: 
+* h-part:(L,W,R)=(42.67912pt, 512.14963pt, 42.67912pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=512.14963pt
+* \textheight=731.23584pt
+* \oddsidemargin=-27.59087pt
+* \evensidemargin=-29.59087pt
+* \topmargin=-15.36449pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=0.0pt
+* \marginparwidth=0.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 2.0pt minus 4.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count89
-\scratchdimen=\dimen115
+\scratchcounter=\count92
+\scratchdimen=\dimen123
 \scratchbox=\box26
-\nofMPsegments=\count90
-\nofMParguments=\count91
-\everyMPshowfont=\toks15
-\MPscratchCnt=\count92
-\MPscratchDim=\dimen116
-\MPnumerator=\count93
-\makeMPintoPDFobject=\count94
-\everyMPtoPDFconversion=\toks16
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count95
+\MPscratchDim=\dimen124
+\MPnumerator=\count96
+\makeMPintoPDFobject=\count97
+\everyMPtoPDFconversion=\toks17
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -179,46 +238,46 @@ e
 <portrain_1.png, id=1, 129.1224pt x 168.1482pt>
 File: portrain_1.png Graphic file (type png)
  <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
 
 <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
  <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
  <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
 
 <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
  <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
  <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
 
 <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
  <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
 File: portrain_1.png Graphic file (type png)
  <use portrain_1.png>
-Package pdftex.def Info: portrain_1.png used on input line 66.
+Package pdftex.def Info: portrain_1.png used on input line 69.
 (pdftex.def)             Requested size: 85.35826pt x 111.1603pt.
  [1
 
@@ -226,184 +285,184 @@ Package pdftex.def Info: portrain_1.png used on input line 66.
 <GitHub-Mark.png, id=11, 562.1pt x 562.1pt>
 File: GitHub-Mark.png Graphic file (type png)
  <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
 <linkedin-512.png, id=12, 513.92pt x 513.92pt>
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 
 <e-mail_icon.jpg, id=13, 339.2675pt x 339.2675pt>
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
 
 File: GitHub-Mark.png Graphic file (type png)
 <use GitHub-Mark.png>
-Package pdftex.def Info: GitHub-Mark.png used on input line 73.
+Package pdftex.def Info: GitHub-Mark.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: linkedin-512.png Graphic file (type png)
  <use linkedin-512.png>
-Package pdftex.def Info: linkedin-512.png used on input line 73.
+Package pdftex.def Info: linkedin-512.png used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35774pt.
 File: e-mail_icon.jpg Graphic file (type jpg)
  <use e-mail_icon.jpg>
-Package pdftex.def Info: e-mail_icon.jpg used on input line 73.
+Package pdftex.def Info: e-mail_icon.jpg used on input line 76.
 (pdftex.def)             Requested size: 85.35826pt x 85.35504pt.
 
-Overfull \hbox (38.78351pt too wide) in paragraph at lines 73--73
+Overfull \hbox (38.78351pt too wide) in paragraph at lines 76--76
 []\OT1/cmss/m/n/8 https://github.com/VadimNV/\OT1/cmss/bx/n/8 CV[]and[]supporti
 ng 
  []
@@ -411,17 +470,17 @@ ng
 [2 <./GitHub-Mark.png> <./linkedin-512.png> <./e-mail_icon.jpg>]
 (./business_card_VN_im1.aux) ) 
 Here is how much of TeX's memory you used:
- 1712 strings out of 494910
- 24969 string characters out of 6179836
- 93364 words of memory out of 5000000
- 4992 multiletter control sequences out of 15000+600000
+ 2191 strings out of 494910
+ 31991 string characters out of 6179836
+ 106265 words of memory out of 5000000
+ 5460 multiletter control sequences out of 15000+600000
  5433 words of font info for 20 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,12n,45p,250b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmssbx10.pfb>
-Output written on business_card_VN_im1.pdf (2 pages, 848983 bytes).
+Output written on business_card_VN_im1.pdf (2 pages, 848957 bytes).
 PDF statistics:
  27 PDF objects out of 1000 (max. 8388607)
  13 compressed objects within 1 object stream
