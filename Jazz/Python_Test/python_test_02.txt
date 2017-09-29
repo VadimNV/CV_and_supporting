@@ -1,0 +1,25 @@
+fn(23) prints:
+[23]
+This is because the list object is not passed on two function, so inside the function lst is set to an empty list by defautl.
+number 23 is then inserted at position 0 into this empty list, creating [23]
+
+fn(16,[1,2]) prints:
+[16, 1, 2]
+Because 14 is inserted at a position 0 into a list [1,2]
+
+fn([10],[3,4]) prints:
+[[10], 3, 4]
+Because a list [10] is inserted at position 0 inside another list (so 0'th element of the output list is a list itself).
+
+fn([11]) prints:
+[[11],23]
+Because a default argument value of a function is computed only once when the 'def' statement is encountered[Ref 1].
+So the first time the definition of the function is encountered, an address in memory is created for lst and the value
+of [] is written to memory - let's call this memory address DefLst#. Later on, if an input list is provided, e.g. [1,2]
+or [3,4], these come with their own pointers to a memory cell. If the lst is not provided on input, the function fn 
+resorts to using the address that was created during the function definition, namely DefLst#. It can read from and
+write to this memory cell. However, as per stackoverflow/Python documentation, the command lst=[] is only executed once,
+when the code reads the definition of the function for the first time. The value of lst at DefLst# memory cell is not
+reset to the value []. During later calls, as such, the value at DefLst# keeps evolving as the function fn writes to it. 
+
+[Ref 1] https://stackoverflow.com/questions/16549768/lifetime-of-default-function-arguments-in-python
