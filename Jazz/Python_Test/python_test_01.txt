@@ -1,0 +1,20 @@
+There are two types of threads in Pythong[1]
+ 1) Kernel Threads
+ 2) User-space Threads / user threads
+
+-The operating system executes these threads like parallel "processes". On a single processor machine, this parallelism is achieved by thread scheduling or timeslicing.
+
+-Advantages of Threading:
+--Multithreaded programs can run faster on computer systems with multiple CPUs, because theses threads can be executed truly concurrent.
+--A program can remain responsive to input. This is true both on single and on multiple CPU
+--Threads of a process can share the memory of global variables. If a global variable is changed in one thread, this change is valid for all threads. A thread can have local variables
+
+-There are two modules which support the usage of threads in Python:
+--thread
+and
+--threading
+
+-The module "thread" treats a thread as a function, while the module "threading" is implemented in an object oriented way, i.e. every thread corresponds to an object.
+
+
+[1] https://www.python-course.eu/threads.php
