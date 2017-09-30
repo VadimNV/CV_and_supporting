@@ -1,0 +1,50 @@
+The class "window" will contain some variables and methods. For example:
+
+class window {
+   void f(int x) {
+      ...
+                 }
+             }
+
+the inheritance for the class "window_with_menu_and_toolbar" looks like this:
+
+                                         window  (W)
+                                       /        \
+              (W_T) window_with_toolbar          window_with_menu (W_M)
+                                       \        /
+                             window_with_menu_and_toolbar (W_TM)
+
+and so:       W_T contains a method f, because it is inherited from W;
+              W_M also contains a method with the same name, which it also inherited from W
+finally:      W_TM "tries" to inherit a method called f from W_T and also a method with
+              the same name from W_M. An ambiguity arises:
+if we define: W_TM objTM
+and use:      objTM.f(3)
+              the program won't know where to use a method "W_T->f" or "W_M->f" and so a compiler
+              will complain and through an error.
+
+to make the issue of an identical name "f" poping up among both the methods of W_M and W_T more clear, 
+suppose, for example, that W_M and W_T both overload the method "f" in two distinct ways. f inside W_T
+and f inside W_M are in different scopes and so the overloading cannot be resolved inside the class W_TM.
+This is to say that, in genereal, when inheriting from two or more different classes that each have methods
+with the same name, one cannot assume that this method performs an identical task in each of the parent 
+classes simply by virtue of an identical name.
+
+/\/\/\/\/\/\
+
+Solution: use the "using" declaration. It effectively creates another name for the same method (and also
+brings the method from a parent class within scope of child to resolve overloading among parent/child if required)
+
+class window_with_toolbar : public window {
+   using window_with_toolbar::f;
+   ...
+}
+
+class window_with_menu : public window {
+   using window_with_menu::f;
+   ...
+}
+
+now the class W_TM inherits methods "window_with_menu::f" and "window_with_toolbar::f" which can be used as
+
+objTM.window_with_menu::f(3);
