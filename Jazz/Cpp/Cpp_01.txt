@@ -48,3 +48,5 @@ class window_with_menu : public window {
 now the class W_TM inherits methods "window_with_menu::f" and "window_with_toolbar::f" which can be used as
 
 objTM.window_with_menu::f(3);
+
+Source: stackoverflow
