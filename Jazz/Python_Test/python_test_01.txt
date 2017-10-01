@@ -1,20 +1,60 @@
-There are two types of threads in Pythong[1]
- 1) Kernel Threads
- 2) User-space Threads / user threads
-
--The operating system executes these threads like parallel "processes". On a single processor machine, this parallelism is achieved by thread scheduling or timeslicing.
-
--Advantages of Threading:
---Multithreaded programs can run faster on computer systems with multiple CPUs, because theses threads can be executed truly concurrent.
---A program can remain responsive to input. This is true both on single and on multiple CPU
---Threads of a process can share the memory of global variables. If a global variable is changed in one thread, this change is valid for all threads. A thread can have local variables
-
--There are two modules which support the usage of threads in Python:
---thread
-and
---threading
-
--The module "thread" treats a thread as a function, while the module "threading" is implemented in an object oriented way, i.e. every thread corresponds to an object.
+Two modules for creating multithreaded programs in Python are 
+1. thread
+2. threading
+- also: from multiprocessing.dummy import Pool as ThreadPool - it is a library that uses 'threading' module with a layer of "automation" on top, making writing multi-threaded programs easier/cleaner/safer. It works well in a combination with a function 'map' [2]
+- also: library 'Queue' can help handle locking in a multi-threaded process
 
 
-[1] https://www.python-course.eu/threads.php
+
+(*)Threading as a whole in Python.
+
+- Due to Global Interpreter Lock different threads cannot be run on parallel processors in Python (except for some I/O operations, which in fact can achieve parallelism). Instead, interleaving takes place by scheduling threads in a way that saves overall execution time. The conclusion is that threading can save time for tasks involving I/O or processes that require waiting (e.g. requesting info from a url).
+Besides a speed-up for some I/O processes, another advantages are
+-- retaining responsiveness to the input of the program.
+-- threads of a process share the memory of global variables. Modifying it in one thread, updates the variable for all other threads. This can be useful depending on the program design.
+-- given the above advantages, a positive feature about multi-threading is that the computational overhead is low relative to multi-process parallelization.
+- The disadvantages, as a whole, are:
+-- coding and debugging is more difficult because one needs to carefully handle "race-conditions" if I can call it that. One needs to think when and where one thread needs to wait for other threads or processes to finish in order for the program to produce the intended output.
+-- because of the Global Interpreter Lock, many multi-threaded programs will end up actually being slower. This is because they will run in series as before, but the additional overhead of tracking different threads.
+
+
+
+(*)thread module
+
+- this module is now considered deprecated in Python 3+ but it can be called under the name '_thread'. It is implemented as a function.
+- The main advantage of this module is that it is, I think, easier to use for a short code than 'threading' module, example[1]:
+#/\//\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+import thread
+# Define a function for the thread
+def myFunc( input1, input2):
+    ...do something...
+
+# Create two threads as follows
+try:
+   thread.start_new_thread( myFunc, (in1_a, in2_a, ) )
+   thread.start_new_thread( myFunc, (in1_b, in2_b, ) )
+except:
+   print "Error: unable to start thread"
+
+c = raw_input("Type something to quit.")
+#/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+- the main disadvantages of this module are (besides being deprecated)
+-- it has less functionality than the new module
+-- it does not provide a class (see below)
+
+
+
+(*)threading module
+
+- this module is implemented as a class.
+- The main advantages are: 
+-- it provides all the functionality of thread module, but also extra methods, such as returning the number of active threads
+-- it provides a class, and a new derived class can be defined which overloads the methods of the parent class in a convenient way.
+-- the fact that it offers a class helps to create several other derived classes which make the overall program clearer/cleaner/safer. This is the case more so for the larger, more complex programs
+- the main disadvantages are:
+-- it is still quite complicated to use. 
+
+[1] https://www.tutorialspoint.com/python/python_multithreading.htm
+[2] http://chriskiehl.com/article/parallelism-in-one-line/
+[3] https://stackoverflow.com/questions/2846653/how-to-use-threading-in-python
+[4] https://www.python-course.eu/threads.php
