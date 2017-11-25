@@ -1,6 +1,5 @@
 <blockquote>
-  <p> 
-    <br>\| __________________________________________
+  <p>\| __________________________________________
     <br>/| 
     <br>\| Vadim Nemytov (vadim.nemytov13@imperial.ac.uk),
     <br>/| Imperial College London,
