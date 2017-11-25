@@ -1,0 +1,56 @@
+mode md # forcetest # md
+timestep 30.0     ! [a.u.] = [2.418884326505*10^-17 seconds]
+no_timesteps 27560 # 600 # 5512 ! 7*1378*30 [a.u.] ~ 7 [picoseconds]
+neighbourlist_update 1 1
+# steepest_descent
+compare_programs
+end
+# verbosity
+#  print_pol
+# end
+system
+n2_neighbour_algo
+# paramfile parameters.new.PT
+paramfile PARAMin
+natoms 5 # 135 # 5 # 40 # 135
+# ewaldtest
+nspecies 3
+posfile   RXdPOSin
+celfile   RXdCELin
+cutoffs 25.0 20.0  20.
+# convergence set this high for comparison with traj
+# ewald_conv 1.0e-6
+raggio 1.5
+gcut 3.0
+#
+ewald_conv 1.0e-9 # e-12 # 1.0e-11
+pol_conv 1.0e-5 # e-10 # 1.0e-9
+charge_conv 1.0e-6 # e-12 # 1.0d-9
+charge_order 2
+charge_scheme sc
+max_newton_steps 40
+# zero_cm_vel
+max_charge_steps 200
+max_pol_steps 200
+# traj_mx_inv .true.
+# constrain_mx_atom 2
+newton_conv 1e-6
+# pulay_pressure 0.128
+end
+# thermostats
+#  # randomise 0.001 # [1000s of K]
+#  velocity_rescaling 300      # target temperature in [K]
+#  velocity_rescaling_tol 0.01 # in [% of velocity_rescaling]
+#  temp_average_blocksize 100  # during the run, define T as the average of (here) 1000 timesteps
+#  velocity_rescaling_factor 2 # T is changed by 2(T_target-T) b/c half the added energy will
+#  			      # redistribute into potential energy d.o.f (equipart'n theorem)
+# end
+# cell
+#  variable_cell .true.
+#  steepest_descent
+# end
+species
+O 15.9994
+Ti 47.867
+Ba 137.327
+end

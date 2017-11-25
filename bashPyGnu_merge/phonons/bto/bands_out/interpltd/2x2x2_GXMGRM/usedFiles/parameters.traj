@@ -1,0 +1,81 @@
+ charge
+ # WARNING
+ # Due to rounding errors, system may not be neutral
+ # Adjust z(nsp) (last number) accordingly
+ -1.265110  2.530218  1.265110
+ charge_gen
+ F   F   F
+ 
+ variable_charge
+    1.4781178918E+07    1.0654713573E+05    5.1274280051E+10
+    1.7392984917E+08    5.6433155657E-01    9.9589996105E+14
+ variable_charge_gen
+ F   T   F  
+ F   T   F  
+ 
+ NNscaling_par
+ NNscale_qq_qd_dd
+ -0.28678047
+  0.89290873
+  0.58327476
+ NNscale_qq_qd_dd_gen
+ F
+ F
+ F
+ TTbij
+    1.3121455930E+00    4.3483577921E+00    1.6832255243E+04
+    1.6833082772E+04    1.4288073624E+00
+    9.7493154822E+03
+ TTbij_gen
+ F   F   F  
+ F   F  
+ F  
+ TTcij
+    2.0002302924E+00   -3.8656000345E+01    0.0000000000E+00
+    0.0000000000E+00   -2.0089429803E+00
+    0.0000000000E+00
+ TTcij_gen
+ F   F   F  
+ F   F  
+ F  
+ end
+ 
+ polarisability
+  3.708333  7.279149  8.390608
+ polarisability_gen
+ F   F   F
+ 
+ 
+ 
+ 
+ 
+ morse
+ r_morse
+    1.3260517031E+01    4.9113653624E+00    5.3510541903E+00
+    1.0144933551E+01    1.4222692220E+01
+    1.2290512274E+01
+ r_morse_gen
+ F   F   F  
+ F   F  
+ F  
+ gamma_morse
+    1.8751405177E+01    1.0652870209E+01    8.8824972483E+00
+    2.0786436909E+01    8.1759576709E+00
+    6.9747710696E+00
+ gamma_morse_gen
+ F   F   F  
+ F   F  
+ F  
+ d_morse
+    1.4996398739E-07    3.9562967096E-03    1.3097658575E-02
+   -1.4207535212E-05    2.6897796120E-04
+    1.0845409487E-03
+ d_morse_gen
+ F   F   F  
+ F   F  
+ F  
+ end
+ 
+ 
+ 
+ 

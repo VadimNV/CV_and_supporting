@@ -1,0 +1,231 @@
+#!/bin/bash
+
+#
+IP=QEqTi        # TS-QEq_NN
+#IP=QEqTiqd      # TS-QEq
+#IP=QEqOffPolON  # TS
+#IP=QEqOnPolOff  # MS-Q
+#IP=QEqOffPolOff # ~1/r fixed charge
+#
+kPathName=GXMGRM
+#interpltion=interpltd        # whether bands use automatic interpolation or not
+interpltion=noninterpltd     # whether bands use automatic interpolation or not
+pathSyst=bto
+au_to_ang=0.5291772108
+atmNum=5
+atmNumBa=1
+atmNumTi=1
+atmNumOx=3
+nx=7
+ny=7
+nz=7
+#
+pathBandKpath=$pathSyst/kSpacePath_etc/
+pathWork=workDir
+pathParam=$pathSyst/genParam_etc
+pathRXin=RXed_cel_pos
+pathTrajX=/home/vn713/ASAP_git/asap/bin
+pathUsed=usedFiles
+mkdir -p ${pathSyst}/bands_out/${interpltion}/${IP}/${nx}x${ny}x${nz}_${kPathName}
+pathOut=${pathSyst}/bands_out/${interpltion}/${IP}/${nx}x${ny}x${nz}_${kPathName}
+#pathOut=${pathSyst}/bands_outLitZ/IP/${interpltion}/${nx}x${ny}x${nz}_${kPathName}
+echo $pathOut
+mkdir $pathWork/$pathUsed
+mkdir $pathWork/$pathUsed/progC_relaxed
+#
+POSCARfile=POSCAR
+bandsKpathFile=band${kPathName}_template
+bornFile=BORN
+qptFile=QPOINTS
+qPtsGuide=QPOINTSpyGXMGRM
+#          ...ProgC is not a variable, unless somebody changes ASAP output file name
+ProgC=Program_Comparison
+ProgCrx=ProgC_RXed
+if [ "$IP" == "QEqTi" ]; then
+ RXdCel=pyCubic0.993127286302ang.cel
+ RXdPos=pyCubic0.993127286302scaled.pos
+ paramIn=paramNewPT_QEqTi_fxdRatio_s170
+elif [ "$IP" == "QEqOffPolON" ]; then
+ RXdCel=pyCubic0.992845280553ang.cel
+ RXdPos=pyCubic0.992845280553scaled.pos
+ paramIn=paramNewPT_QEqOFF_s10_1061
+elif [ "$IP" == "QEqOffPolOff" ]; then
+ RXdCel=pyCubic0.988305644003ang.cel
+ RXdPos=pyCubic0.988305644003scaled.pos
+ paramIn=genParam_etc/paramPTetc_5485m2
+else
+ echo "please specify the relaxed cel and pos for ${IP} IP"
+fi
+genIn=gen_bto_template.in
+#
+supercelFactor=$(($nx * $ny * $nz))
+limBa=$(($atmNumBa * $supercelFactor))
+limTi=$(($atmNumTi * $supercelFactor))
+limOx=$(($atmNumOx * $supercelFactor))
+atmNumTot=$(($atmNum * $supercelFactor))
+
+# ACT 0.   Generate Program_Comparison for a relaxed cell
+cp $pathBandKpath/$bandsKpathFile $pathWork
+cp $pathBandKpath/$bornFile       $pathWork
+if [ "$interpltion" == "noninterpltd" ]; then
+#          ...create dense set of qpoint that connects high sym. points as in template file $qPtsGuide  ${pathBandKpath}
+ python denseQpathMaker.py <<EOF
+${pathBandKpath} ${qPtsGuide} ${qptFile}
+EOF
+ cp $pathBandKpath/$qptFile       $pathWork
+fi
+cp $pathSyst/$pathRXin/$RXdCel    $pathWork
+cp $pathSyst/$pathRXin/$RXdPos    $pathWork
+cp $pathParam/$genIn              $pathWork
+cp $pathParam/$paramIn            $pathWork
+sed -i "/paramfile /  s|PARAMin|${paramIn}|" $pathWork/$genIn
+sed -i "/posfile /    s|RXdPOSin|${RXdPos}|" $pathWork/$genIn
+sed -i "/celfile /    s|RXdCELin|${RXdCel}|" $pathWork/$genIn
+#          ...***changing current directory to $pathWork***
+cd $pathWork
+$pathTrajX/traj.x < $genIn
+rm Cartesian_* Cell_* charges.pdb energies Environment_Report Forces fort.* Pol positions.xyz Scaled_* Stress
+mv $RXdPos $pathUsed
+mv $RXdCel $pathUsed
+
+# ACT I.   Relax the system
+#          ...assuming it is already relaxed, manually.
+
+# ACT II.  Prepare POSCAR file to use as input to Phonopy
+#           ...here-onwards I am assuming to be in the $pathWork i.e. workDir/
+echo "Ba Ti O"                                                                                                   > $POSCARfile
+echo "1.000000000000000"                                                                                        >> $POSCARfile
+awk  '/ Cell \[Angstrom\]/ {for(i=1; i<=3; i++) {getline; print  substr($0,18,57);} }' $ProgC                   >> $POSCARfile
+echo "$atmNumBa $atmNumTi $atmNumOx"                                                                            >> $POSCARfile
+echo "Direct"                                                                                                   >> $POSCARfile
+awk  '/ Positions \[asap Scaled   \]/ {for(i=1; i<='$atmNum'; i++) {getline; print  substr($0,15,57)} }' $ProgC >> $POSCARfile
+mv $ProgC $pathUsed/progC_relaxed/
+
+# ACT III. Run phonopy -d --dim="1 1 1"
+#          ...assuming to be in the $pathWork i.e. workDir/
+module load python/2.7.13
+module load phonopy/1.11.12.92
+phonopy -d --dim="$nx $ny $nz"
+#phonopy -d --dim="$nx $ny $nz" -v
+#          ...use a "trick" to extract the number of Displacements. e.g. 3 for2x2x2 or 6 for 1x1x1 (TiO2 rutile)
+awk '/- atom:/ { print  substr($0,9,7); }' disp.yaml > AtmIndex.txt
+numDisp=`cat AtmIndex.txt | wc -l`
+rm AtmIndex.txt 
+                                                                             
+# ACT IV.  Make asap .pos and .cel from POSCAR-001 etc.
+#          ...assuming to be in the $pathWork i.e. workDir/
+echo Ba > atm_labels.txt
+for i in `seq 2 $limBa`
+do
+  echo Ba >> atm_labels.txt
+done
+for i in `seq 1 $limTi`
+do
+  echo Ti >> atm_labels.txt
+done
+for i in `seq 1 $limOx`;
+do
+  echo O >> atm_labels.txt
+done
+
+for i in `seq 1 $numDisp`; #TODO for some supercells there are more than 3 directions, e.g. 1x2x1 supercell
+do
+  #        ...posfile:
+  echo scaled                                                              > Displacement-00${i}.pos
+  echo " "                                                                >> Displacement-00${i}.pos
+  sed -ne '/Direct/,$p' -e '$q' POSCAR-00${i} | tail -n +2 > noLabels.pos
+  paste                                       atm_labels.txt noLabels.pos >> Displacement-00${i}.pos
+  rm noLabels.pos
+  #        ...cellfile:
+  echo angstrom                                                            > Displacement-00${i}.cel
+  echo " "                                                                >> Displacement-00${i}.cel
+  head -5 POSCAR-00${i}  | tail -n +3                                     >> Displacement-00${i}.cel
+done
+rm atm_labels.txt
+mv POSCAR-* $pathUsed
+
+# ACT V.   Modify trajFile and calculate forces
+#          ...assuming to be in the $pathWork i.e. workDir/
+for i in `seq 1 $numDisp`;
+do
+  cat $genIn > genDisplacedIn
+  sed -i "/natoms /     s|${atmNum}|$(($atmNum * $supercelFactor))|" genDisplacedIn
+  sed -i "/posfile /    s|${RXdPos}|Displacement-00${i}.pos|"        genDisplacedIn
+  sed -i "/celfile /    s|${RXdCel}|Displacement-00${i}.cel|"        genDisplacedIn
+  $pathTrajX/traj.x                                                < genDisplacedIn
+  mv $ProgC "ProgC${i}"
+  mv Displacement-00${i}.* $pathUsed
+done
+rm Cartesian_* Cell_* charges.pdb energies Environment_Report Forces fort.* Pol positions.xyz Scaled_* Stress
+mv $genIn   $pathUsed
+mv $paramIn $pathUsed
+rm genDisplacedIn parameters.traj
+ 
+# ACT VI.  Prepare FORCE_SETS files
+#          ...assuming to be in the $pathWork i.e. workDir/
+#          ...disp.yaml stores displacements in Angstrom, and FORCE_SETS expects in angstrom
+#          ...get displacement vectors in angstrom
+awk '/displacement:/ {getline; print  substr($0,8,60); }' disp.yaml > dispAng.txt
+#          ...DO NOT convert displacement vectors to alat. Hence dividing by 1.0=a=b=c
+a=1.0
+b=1.0
+c=1.0
+awk -v a="$a" -v b="$b" -v c="$c" -F "," '{printf "%20.14f %20.14f %20.14f\n", $1/a , $2/b , $3/c}' dispAng.txt > angstromDisp.txt
+rm dispAng.txt
+#          ...get atom numbers corresponding to displacements
+awk '/- atom:/ { print  substr($0,9,7); }'                                                          disp.yaml   > AtmIndex.txt
+#          ...now make the FORCE_SETS file
+echo $atmNumTot                                                                                                                     > FORCE_SETS
+cat AtmIndex.txt | wc -l                                                                                                           >> FORCE_SETS
+for j in `seq 1 $numDisp`;
+do
+  echo ""                                                                                                                          >> FORCE_SETS
+  awk -v j=$j 'FNR==j {print }'                                                                                   AtmIndex.txt     >> FORCE_SETS
+  awk -v j=$j 'FNR==j {print }'                                                                                   angstromDisp.txt >> FORCE_SETS
+  awk -v NUM=$atmNumTot '/Forces again\[eV\/Angstrom\]/ {for(i=1; i<=NUM; i++) {getline; print  substr($0,80,65);} }'   ProgC${j}  >> FORCE_SETS
+done
+mv ProgC* $pathUsed
+rm angstromDisp.txt AtmIndex.txt
+
+# ACT VII. Prepare band.conf
+#          ...assuming to be in the $pathWork i.e. workDir/
+#          ...a template must be prepared thoughtfully in advance. a list of high symmetry point in k-space. Must contain DIM indicating supercell
+cat $bandsKpathFile > band.conf
+sed -i "/DIM /    s/Nx Ny Nz/${nx} ${ny} ${nz}/" band.conf
+if [ "$interpltion" == "noninterpltd" ]; then
+ echo 'QPOINTS = .TRUE.' >> band.conf
+fi
+mv $bandsKpathFile $pathUsed
+
+# ACT VIII. Calculate Phonon spectrum, connecting high symmetry points (a picture)
+#          ...TODO calculate my own Born Effective charges using TS IP
+#          ...assuming to be in the $pathWork i.e. workDir/
+phonopy -p --nac --save band.conf
+if [ "$interpltion" == "interpltd" ]; then
+ bandplot --gnuplot band.yaml > band.gnu
+fi
+mv $bornFile $pathUsed
+if [ "$interpltion" == "noninterpltd" ]; then
+ mv $qptFile $pathUsed
+fi
+
+# ACT IX. Move FORCE_SET etc to an output folder and clean up
+#          ...assuming to be in the $pathWork i.e. workDir/
+cp -r ./$pathUsed ../$pathOut
+cp * ../$pathOut
+cd ../
+
+# ACT X. If calculating non-interpolated phonon spectrum then convert yaml file to gnu-plotable file
+#          ...assuming to be in the original folder (and ***NOT*** in the $pathWork)
+#          ...note, be CAREFUL. <<EOF interprets the whole next line as input, including quotes or white space. So make sure to have no white space, etc.
+if [ "$interpltion" == "noninterpltd" ]; then
+ python qpointBandConstructor.py <<EOF
+${pathOut}/
+EOF
+ mv qpoint_bands.gnu       $pathOut
+ mv gnuPlotterThisSyst.gnu $pathOut
+fi
+
+# Clean up
+# rm -r $pathWork/$pathUsed
+# rm $pathWork/*

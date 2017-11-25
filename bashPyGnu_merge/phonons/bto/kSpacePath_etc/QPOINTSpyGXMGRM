@@ -1,0 +1,7 @@
+6 # this file is intended as input to python, which will generate points inbetween the high symmetry points which are on lines 1 onwards.
+0.0 0.0 0.0 31
+0.0 0.5 0.0 31
+0.5 0.5 0.0 31
+0.0 0.0 0.0 31
+0.5 0.5 0.5 31
+0.5 0.5 0.0 31

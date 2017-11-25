@@ -1,0 +1,7 @@
+MODEL
+HETATM    1  Ba  XXX     1       0.000   0.000   0.000   NaN   NaN            Ba
+HETATM    2  Ti  XXX     1       1.986   1.986   1.986   NaN   NaN            Ti
+HETATM    3  O   XXX     1       1.986   1.986   0.000   NaN   NaN            O 
+HETATM    4  O   XXX     1       1.986   0.000   1.986   NaN   NaN            O 
+HETATM    5  O   XXX     1       0.000   1.986   1.986   NaN   NaN            O 
+ENDMDL
