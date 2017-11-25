@@ -1,13 +1,13 @@
-##### <pre>\\|____________________________________________________________________|/</pre>
-##### <pre>/|                                                                    |\\</pre>
-##### <pre>\\|                                                                    |/</pre>
-##### <pre>/| Vadim Nemytov (vadim.nemytov13@imperial.ac.uk),                    |\\</pre>
-##### <pre>\\| Imperial College London,                                           |/</pre>
-##### <pre>/| 31-08-2017                                                         |\\</pre>
-##### <pre>\\|                                                                    |/</pre>
-##### <pre>/| Any of the scripts in this folder are free to use.                 |\\</pre>
-##### <pre>\\| Please do not use the raw data or figures.                         |/</pre>
-##### <pre>/|____________________________________________________________________|\\</pre>
+<pre>\\|____________________________________________________________________|/</pre>
+<pre>/|                                                                    |\\</pre>
+<pre>\\|                                                                    |/</pre>
+<pre>/| Vadim Nemytov (vadim.nemytov13@imperial.ac.uk),                    |\\</pre>
+<pre>\\| Imperial College London,                                           |/</pre>
+<pre>/| 31-08-2017                                                         |\\</pre>
+<pre>\\|                                                                    |/</pre>
+<pre>/| Any of the scripts in this folder are free to use.                 |\\</pre>
+<pre>\\| Please do not use the raw data or figures.                         |/</pre>
+<pre>/|____________________________________________________________________|\\</pre>
 <pre>\\|                                                                    |/</pre>
 
 #### Main workflow:
