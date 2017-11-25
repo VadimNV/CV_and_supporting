@@ -1,5 +1,16 @@
-<pre>\\|____________________________________________________________________|/</pre>
-<pre>/|                                                                    |\\</pre>
+## <blockquote>
+  <p> 
+    <br>\| __________________________________________
+    <br>/| 
+    <br>\| Vadim Nemytov (vadim.nemytov13@imperial.ac.uk),
+    <br>/| Imperial College London,
+    <br>\| 31-08-2017
+    <br>/|
+    <br>\| Any of the scripts in this folder are free to use.
+    <br>/| __________________________________________
+    <br>\|
+  </p>
+</blockquote>
 <pre>\\|                                                                    |/</pre>
 <pre>/| Vadim Nemytov (vadim.nemytov13@imperial.ac.uk),                    |\\</pre>
 <pre>\\| Imperial College London,                                           |/</pre>
