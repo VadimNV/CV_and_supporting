@@ -401,6 +401,8 @@ class data_analysis_PolQeq_vs_Pol(object):
             # normalize NNs' forces by average for NN specie:
             self.nnFaveErrAB_Ti[Tk] = [x/FaveOx[Tk] for x in self.nnFaveErrAB_Ti[Tk]] # Note !!! NNs of Ti are Oxygens, hence dividing by FaveOx[Tk]
 
+    # Note to GitHub readers: all data-vizualisation was subsequently moved to a separt Python library, and was called from here.
+    #                         Final version of this file is big and is less illustrative, so not shown.
     def saveFig_F_vs_dqTi(self):                                       # TODO, all safeFig_...() are almost identical -> write a function, call it in each saveFig...()
         # |||\\ Make a 2D Histogram (Py-to-LaTeX) //|||
         xmin, xmax  = -0.08, 0.08                                      # TODO set variable, same for all figs ~ -max(Abs(dqTi[:])), max(Abs(dqTi[:]))
