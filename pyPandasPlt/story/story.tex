@@ -1,0 +1,107 @@
+\documentclass[11pt, a4paper]{report}
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage[titletoc]{appendix}
+\usepackage{amsmath, amssymb}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{xcolor}
+\usepackage{arydshln}
+\usepackage[makeroom]{cancel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[top=2cm, bottom=2.5cm]{geometry}
+\usepackage{booktabs} %to make tables look nice
+\renewcommand{\arraystretch}{1.2} % to make vertical spacing wider in the tables
+\usepackage{multirow} %to make \multirow possible (otherwise only \multicolumn)
+\usepackage{cancel}   %to strike out part of the equation setting it to 0 or 1, etc.
+\usepackage{mathrsfs} %for curly letters use e.g. \mathscr{E}
+
+%\DeclareUnicodeCharacter{2212}{-} % when bibtex has things like {$_{3\textendash\ x}$}
+
+\listfiles %to see LaTeX version in  .log file
+
+\usepackage{listings} %to incldue Mathematica code
+%\usepackage{physics} %includes bracket notation
+\lstloadlanguages{Mathematica}
+
+\usepackage{geometry} %to use gnuplot figure as figures
+\usepackage{color}    %to use gnuplot output as figures
+\usepackage{anyfontsize} %to specify font of a single word (e.g. in gnuplot)
+\usepackage{pgf} %allows Python->Tex figures look native. http://bkanuka.com/articles/native-latex-plots/
+\newcommand\inputpgf[2]{{
+\let\pgfimageWithoutPath\pgfimage
+\renewcommand{\pgfimage}[2][]{\pgfimageWithoutPath[##1]{#1/##2}}
+\input{#1/#2}
+}} %wow, amazing solution to input pgf files using a path at https://tex.stackexchange.com/questions/127667/matplotlib-pgf-images-in-subdirectory
+
+\usepackage{caption}
+\usepackage{subcaption} %to have side-by-side subfigures
+\usepackage{wrapfig} %to wrap text around figures
+\newcommand{\pathnPlan}{/home/vadim/Documents/nplan_olympics/story/}
+%%%
+
+\newcommand{\pathFigs}{figs} %path to SizeEffect figures
+
+\usepackage[sort&compress]{natbib} % to have [1-3] instead of [1,2,3]
+
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother %to have Roman numerals
+
+\usepackage{lscape}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{landscape}
+\centerline{\LARGE\textbf{Competitiveness in the Olympics}}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[!htbp]
+	\centering
+	\inputpgf{\pathnPlan \pathFigs}{HW_scatter.pgf}
+	\caption{Mean athletes' Height and Weight for each Olympic sports (only some outliers are marked for clarity).}
+\end{figure}
+\begin{itemize}
+\item For some sports, having the right body type is crucial
+\item Weightlifters are $\sim30$ kg heavier than Rhythmic Gymnasts while of the same height
+\item At the same time, Volleyball players are as heavy as Weightlifters, but are $\sim20$ cm taller
+\end{itemize}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[!htbp]
+	\centering
+	\inputpgf{\pathnPlan \pathFigs}{GymnasticsYearly.pgf}
+	\caption{Mean (black) and gold medalist's (orange) weight and height in Gymnastics. Dashed line is a linear fit to mean values. Missing points are due to missing data.}
+\end{figure}
+\begin{itemize}
+\item \underline{Example: Gymnastics}
+\item Notice \textendash\ from $1960$ onward gold medalists are lighter and shorter than the average competitor
+\item Participating athletes gradually became shorter and lighter over the decades, arguably due to the competition
+\item Love gymnastics but haven't got the right body type?.. tough luck
+\end{itemize}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[!htbp]
+	\centering
+	\inputpgf{\pathnPlan \pathFigs}{mapsSeason.pgf}
+	\caption{Proportion of the total Gold medals ever won by any country, during the Summer (top) and Winter (bottom) Olympics. Proportion of a given country's victories is proportional to the bubble area, with a lower cap at $2\%$.}
+\end{figure}
+\begin{itemize}
+\item Country's climate clearly plays a role in preparing the athletes, providing a competitive advantage or disadvantage
+\item While most countries have won at least one Gold medal during the Summer Olympics, Winter Olympics are dominated by northern countries
+\item Notice \textendash\ countries from the African and South American continents have never won a Winter Olympics Gold. No snow, no way to practice
+\end{itemize}
+\end{landscape}
+
+\begin{landscape}
+\centerline{\LARGE\textbf{The End}}
+\end{landscape}
+
+\end{document}\n
